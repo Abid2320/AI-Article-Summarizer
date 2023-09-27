@@ -32,6 +32,7 @@ const Demo = () => {
       setAllArticles(updatedAllArticles);
       setArticle(newArticle);
       localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
+      setArticle({ ...article, url: "" });
     }
   };
 
@@ -95,7 +96,7 @@ const Demo = () => {
           <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
         ) : error ? (
           <p className="font-inter font-bold text-black text-center">
-            Something went wrong, please try again...
+            {error?.data?.error}
           </p>
         ) : (
           article.summary && (
